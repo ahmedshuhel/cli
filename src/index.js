@@ -1,11 +1,11 @@
 import program from 'commander';
-import glob from 'glob';
 import logger from 'winston';
 
 import BundleCommand from './commands/bundle';
 import InitCommand from './commands/init';
 import NewCommand from './commands/new';
 import GenerateCommand from './commands/generate';
+import UpdateCommand from './commands/updater';
 
 class Aurelia {
   constructor() {
@@ -21,11 +21,13 @@ class Aurelia {
     let init = new InitCommand(program, this.config, this.logger);
     let newCmd = new NewCommand(program, this.config, this.logger);
     let generateCmd = new GenerateCommand(program, this.config, this.logger);
+    let updateCmd = new UpdateCommand(program, this.config, this.logger);
 
     this.commands[bundle.commandId] = bundle;
     this.commands[init.commandId] = init;
     this.commands[newCmd.commandId] = newCmd;
     this.commands[generateCmd.commandId] = generateCmd;
+    this.commands[updateCmd.commandId] = updateCmd;
 
   }
 
